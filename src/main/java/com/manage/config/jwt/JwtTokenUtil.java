@@ -2,6 +2,7 @@ package com.manage.config.jwt;
 
 import java.util.Date;
 
+import org.hibernate.mapping.Set;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class JwtTokenUtil {
     public String generateAccessToken(User user) {
         return Jwts.builder()
                 .setSubject(user.getId() + "," + user.getEmail())
-                .claim("roles", user.getRoles().toString())
+                .claim("roles", user.getRole())
                 .setIssuer("CodeJava")
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRE_DURATION))

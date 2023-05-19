@@ -52,7 +52,7 @@ public class User implements UserDetails {
     @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Wage> wages = new HashSet<>();
 
     @Override
@@ -98,6 +98,14 @@ public class User implements UserDetails {
 
     public void addRole(Role role) {
         this.roles.add(role);
+    }
+
+    public String getRole() {
+        List<String> listRole = new ArrayList<>();
+        for (Role role : roles) {
+            listRole.add(role.getName());
+        }
+        return listRole.toString();
     }
 
 }
