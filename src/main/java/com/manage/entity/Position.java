@@ -35,6 +35,10 @@ public class Position {
     private String name;
     private String note;
 
+    public Position(Integer id){
+        this.id = id;
+    }
+
     @ManyToMany
     @JoinTable(name = "position_hsl", joinColumns = @JoinColumn(name = "position_id"), inverseJoinColumns = @JoinColumn(name = "hsl_id"))
     private Set<HSL> hsl = new HashSet<>();

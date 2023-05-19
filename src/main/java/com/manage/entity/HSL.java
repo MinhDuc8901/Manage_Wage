@@ -24,5 +24,5 @@ public class HSL {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Double value;
+    private double value;
 }
