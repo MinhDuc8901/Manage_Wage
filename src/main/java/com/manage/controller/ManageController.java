@@ -68,6 +68,13 @@ public class ManageController {
     }
 
     @RolesAllowed("ADMIN")
+    @GetMapping("/get_user_by_id/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Integer id) {
+        User user = userRepo.findById(id).get();
+        return ResponseEntity.ok(new ResponseCustom<User>(200, "Thành công", user));
+    }
+
+    @RolesAllowed("ADMIN")
     @GetMapping("/get_list_user")
     public ResponseEntity<?> getListUser() {
         List<User> users = userRepo.findAll();
