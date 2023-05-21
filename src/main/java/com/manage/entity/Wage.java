@@ -39,5 +39,5 @@ public class Wage {
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private User user;
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Position position;
+    private HSL hsl;
 }

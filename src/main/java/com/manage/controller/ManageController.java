@@ -167,11 +167,12 @@ public class ManageController {
     public ResponseEntity<?> createWageByUser(@RequestBody wageRequest wage) {
         Wage wageInsert = modelMapper.map(wage, Wage.class);
         wageInsert.setWorkOfDay(30);
-        Position position = posiRepo.findById(wage.getPosiId()).get();
+        User user = userRepo.findById(wage.getUserId()).get();
+        wageInsert.setUser(user);
+        HSL hsl = hslRepo.findById(wage.getHSLId()).get();
+        wageInsert.setHsl(hsl);
         double tmpSalary;
-        for (HSL hsl : position.getHsl()) {
-            tmpSalary = (double) hsl.getValue() * 1490000;
-        }
+        tmpSalary = 1490000 * hsl.getValue();
         wageInsert.setSalary(Double.valueOf(tmpSalary));
         wageRepo.save(wageInsert);
         return ResponseEntity.ok(new ResponseCustom<String>(200, "Thành công", ""));

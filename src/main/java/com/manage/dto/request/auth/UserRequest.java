@@ -1,5 +1,7 @@
 package com.manage.dto.request.auth;
 
+import com.manage.entity.Position;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +20,6 @@ public class UserRequest {
     private String password;
     private String name;
     private String stk;
+    private Position position;
 
 }

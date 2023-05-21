@@ -24,6 +24,6 @@ public class wageRequest {
     private Date endDate;
     @JsonProperty("user_id")
     private Integer UserId;
-    @JsonProperty("posi_id")
-    private Integer PosiId;
+    @JsonProperty("hsl_id")
+    private Integer HSLId;
 }

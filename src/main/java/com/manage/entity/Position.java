@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -34,16 +35,15 @@ public class Position {
     private Integer id;
     private String name;
     private String note;
+    
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "position")
+    private User user ;
 
     public Position(Integer id){
         this.id = id;
     }
 
-    @ManyToMany
-    @JoinTable(name = "position_hsl", joinColumns = @JoinColumn(name = "position_id"), inverseJoinColumns = @JoinColumn(name = "hsl_id"))
-    private Set<HSL> hsl = new HashSet<>();
 
-    @OneToMany(mappedBy = "position",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Wage> wages = new HashSet<>();
+    
 
 }
